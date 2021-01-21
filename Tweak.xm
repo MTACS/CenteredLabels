@@ -42,9 +42,11 @@
 %hook _UINavigationBarLargeTitleView
 - (void)layoutSubviews {
     %orig;
-    for (UILabel *label in self.subviews) {
-        if ([label.text isEqual:@"Settings"]) {
-        label.center = CGPointMake(self.center.x, label.center.y);
+    for (UIView *view in self.subviews) {
+        if ([view isKindOfClass:%c(UILabel)]) {
+            if ([view.text isEqual:@"Settings"]) {
+                label.center = CGPointMake(self.center.x, label.center.y);
+            }
         }
     }
 }
